@@ -1,9 +1,9 @@
 import React from 'react'
 
 const Stats = ({objects}) => {
-    const modernObjects = objects.filter((obj) => (obj.year_start >= 1880 && obj.year_start <= 1970) || (obj.year_end >= 1880 && obj.year_end <= 1970))
-
-    const years = modernObjects.map((o) => o.year_start ?? o.year_end).filter(year => typeof year === "number")
+    const modernObjects = objects.filter((obj) => (Number(obj.year_start) >= 1980 && Number(obj.year_start) <= 2025) || (Number(obj.year_end) >= 1980 && Number(obj.year_end) <= 2025))
+    console.log(modernObjects);
+    const years = modernObjects.map(o => Number(o.year_start ?? o.year_end)).filter(year => !isNaN(year))
 
     if (years.length === 0) return <p>No valid year data.</p>
     
@@ -30,10 +30,10 @@ const Stats = ({objects}) => {
         <p>Mean Year: {mean}</p>
     </div>
     <div className='stat-card'>
-        <p>Mode Year: {mean}</p>
+        <p>Mode Year: {mode}</p>
     </div>
     <div className='stat-card'>
-        <p>Range Year: {mean}</p>
+        <p>Range Year: {minYear}-{maxYear}</p>
     </div>
     </>
     )

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import NavContainer from './components/NavContainer.jsx'
+import Stats from './components/Stats.jsx'
 
 const API_TOKEN = import.meta.env.VITE_API_KEY;
 const BASE_URL = "https://api.collection.cooperhewitt.org/rest/"
@@ -36,7 +37,7 @@ function App() {
         page++
       } while (page <= totalPages)
       
-      const filtered = allObjects.filter((obj) => (obj.year_start >= 1880 && obj.year_start <= 1970) || (obj.year_end >= 1880 && obj.year_end <= 1970))
+      const filtered = allObjects.filter((obj) => (Number(obj.year_start) >= 1980 && Number(obj.year_start) <= 2025) || (Number(obj.year_end) >= 1980 && Number(obj.year_end) <= 2025))
 
       setObjects(filtered);
 
@@ -61,9 +62,9 @@ function App() {
     <>
     <NavContainer/>
     <div className="app">
-      <h1>🎨 Modern Art On Display (1880–1970)</h1>
-      {/* <Stats objects={objects} />
-      <SearchAndList objects={objects} /> */}
+      <h1>🎨 Contemporary Art On Display (1980-2025)</h1>
+      <Stats objects={objects} />
+      {/* <SearchAndList objects={objects} /> */}
     </div>
     </>
   )
