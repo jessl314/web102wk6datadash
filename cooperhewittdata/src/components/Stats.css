@@ -1,0 +1,13 @@
+.stats-card-container {
+  display: flex; 
+  gap: 20px; 
+  justify-content: center; 
+}
+
+.stat-card {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: black;
+}

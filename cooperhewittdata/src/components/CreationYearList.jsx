@@ -29,7 +29,8 @@ const CreationYearList = ({objects}) => {
 
     return (
         <div className="search-list">
-            <input
+            <div className="filter">
+                 <input
                 type="text"
                 value={searchYear}
                 onChange={(e) => {
@@ -37,16 +38,18 @@ const CreationYearList = ({objects}) => {
                 setPage(0); // Reset page on search
                 }}
                 placeholder="Filter By Year"
-            />
-            <input
-                type="text"
-                value={searchMedium}
-                onChange={(e) => {
-                    setSearchMedium(e.target.value);
-                    setPage(0);
-                }}
-                placeholder="Filter by Medium"
-            />
+                />
+                <input
+                    type="text"
+                    value={searchMedium}
+                    onChange={(e) => {
+                        setSearchMedium(e.target.value);
+                        setPage(0);
+                    }}
+                    placeholder="Filter by Medium"
+                />
+
+            </div>
 
             <table>
                 <thead>
@@ -70,13 +73,13 @@ const CreationYearList = ({objects}) => {
                 </tbody>
             </table>
             <div className="pagination">
-                <button disabled={page === 1} onClick={() => setPage(page - 1)}>
+                <button disabled={page === 0} onClick={() => setPage(page - 1)}>
                     ⬅ Prev
                 </button>
                 <span>
-                    Page {page} of {totalPages}
+                    Page {page + 1} of {totalPages}
                 </span>
-                <button disabled={page === totalPages} onClick={() => setPage(page + 1)}>
+                <button disabled={page >= totalPages - 1} onClick={() => setPage(page + 1)}>
                     Next ➡
                 </button>
             </div>

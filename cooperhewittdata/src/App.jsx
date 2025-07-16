@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import NavContainer from './components/NavContainer.jsx'
+import About from './components/About.jsx'
 import Stats from './components/Stats.jsx'
 import CreationYearList from './components/CreationYearList.jsx';
 
@@ -58,13 +58,15 @@ function App() {
   if (error) return <p>Error: {error}</p>;
 
 
-
   return (
     <>
-    <NavContainer/>
+    <About/>
     <div className="app">
-      <h1>🎨 Contemporary Art On Display (1980-2025)</h1>
-      <Stats objects={objects} />
+      <div className="stats">
+        <h2>🎨 Contemporary Art On Display (1980-2025)</h2>
+        <Stats objects={objects} />
+      </div>
+      <br></br>
       <CreationYearList objects={objects} />
     </div>
     </>

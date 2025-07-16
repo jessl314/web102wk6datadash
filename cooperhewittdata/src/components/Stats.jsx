@@ -1,4 +1,5 @@
 import React from 'react'
+import './Stats.css'
 
 const Stats = ({objects}) => {
     const modernObjects = objects.filter((obj) => (Number(obj.year_start) >= 1980 && Number(obj.year_start) <= 2025) || (Number(obj.year_end) >= 1980 && Number(obj.year_end) <= 2025))
@@ -26,17 +27,17 @@ const Stats = ({objects}) => {
 
 
     return (
-    <>
-    <div className='stat-card'>
-        <p>Mean Year: {mean}</p>
+    <div className='stats-card-container'>
+        <div className='stat-card'>
+            <p>Mean Year: {mean}</p>
+        </div>
+        <div className='stat-card'>
+            <p>Mode Year: {mode}</p>
+        </div>
+        <div className='stat-card'>
+            <p>Range Year: {minYear}-{maxYear}</p>
+        </div>
     </div>
-    <div className='stat-card'>
-        <p>Mode Year: {mode}</p>
-    </div>
-    <div className='stat-card'>
-        <p>Range Year: {minYear}-{maxYear}</p>
-    </div>
-    </>
     )
 }
 
