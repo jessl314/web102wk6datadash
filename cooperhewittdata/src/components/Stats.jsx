@@ -2,7 +2,8 @@ import React from 'react'
 
 const Stats = ({objects}) => {
     const modernObjects = objects.filter((obj) => (Number(obj.year_start) >= 1980 && Number(obj.year_start) <= 2025) || (Number(obj.year_end) >= 1980 && Number(obj.year_end) <= 2025))
-    console.log(modernObjects);
+    
+    
     const years = modernObjects.map(o => Number(o.year_start ?? o.year_end)).filter(year => !isNaN(year))
 
     if (years.length === 0) return <p>No valid year data.</p>

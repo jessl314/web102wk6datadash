@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import NavContainer from './components/NavContainer.jsx'
 import Stats from './components/Stats.jsx'
+import CreationYearList from './components/CreationYearList.jsx';
 
 const API_TOKEN = import.meta.env.VITE_API_KEY;
 const BASE_URL = "https://api.collection.cooperhewitt.org/rest/"
@@ -64,7 +65,7 @@ function App() {
     <div className="app">
       <h1>🎨 Contemporary Art On Display (1980-2025)</h1>
       <Stats objects={objects} />
-      {/* <SearchAndList objects={objects} /> */}
+      <CreationYearList objects={objects} />
     </div>
     </>
   )
