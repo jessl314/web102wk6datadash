@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import './ItemDetails.css';
 
 const ItemDetail = () => {
   const { id } = useParams();
@@ -34,13 +35,15 @@ const ItemDetail = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="item-detail">
-      <h2>{item.title}</h2>
-      <p><strong>Date:</strong> {item.date}</p>
-      <p><strong>Type:</strong> {item.type}</p>
-      <p><strong>Description:</strong> {item.description || "No description available."}</p>
-      <p><strong>Credit:</strong> {item.creditline}</p>
-      <Link to="/">← Back to Dashboard</Link>
+    <div className="item-detail-container">
+      <div className="item-detail-card">
+        <h2>{item.title}</h2>
+        <p><strong>Date:</strong> {item.date}</p>
+        <p><strong>Type:</strong> {item.type}</p>
+        <p><strong>Description:</strong> {item.description || "No description available."}</p>
+        <p><strong>Credit:</strong> {item.creditline}</p>
+        <Link to="/">← Back to Dashboard</Link>
+      </div>
     </div>
   );
 };
