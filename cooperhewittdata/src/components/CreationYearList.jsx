@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {Link} from 'react-router-dom';
 import './CreationYearList.css'
 
 const CreationYearList = ({objects}) => {
@@ -65,7 +66,11 @@ const CreationYearList = ({objects}) => {
                     return (
                         <tr key={obj.id}>
                         <td>{year}</td>
-                        <td>{obj.title || "Untitled"}</td>
+                        <td>
+                            <Link to={`/item/${obj.id}`}>
+                                {obj.title || "Untitled"}
+                            </Link>
+                        </td>
                         <td>{obj.medium || "Unknown"}</td>
                         </tr>
                     );

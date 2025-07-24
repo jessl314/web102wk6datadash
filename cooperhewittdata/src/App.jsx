@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import NavBar from './components/NavBar.jsx'
-import Dashboard from './pages/Dashboard.jsx'
+import NavBar from './components/NavBar'
+import Dashboard from './pages/Dashboard'
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import ItemDetail from './pages/ItemDetails'
 
 const API_TOKEN = import.meta.env.VITE_API_KEY;
 const BASE_URL = "https://api.collection.cooperhewitt.org/rest/"
@@ -66,6 +67,7 @@ function App() {
       {!loading && !error && (
         <Routes>
           <Route path="/" element={<Dashboard objects={objects} />} />
+          <Route path="/item/:id" element={<ItemDetail />}/>
         </Routes>
       )}
     
