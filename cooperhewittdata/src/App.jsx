@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import About from './components/About.jsx'
-import Stats from './components/Stats.jsx'
-import CreationYearList from './components/CreationYearList.jsx';
+import NavBar from './components/NavBar.jsx'
+import Dashboard from './pages/Dashboard.jsx'
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
 const API_TOKEN = import.meta.env.VITE_API_KEY;
 const BASE_URL = "https://api.collection.cooperhewitt.org/rest/"
@@ -59,17 +59,17 @@ function App() {
 
 
   return (
-    <>
-    <About/>
-    <div className="app">
-      <div className="stats">
-        <h2>🎨 Contemporary Art On Display (1980-2025)</h2>
-        <Stats objects={objects} />
-      </div>
-      <br></br>
-      <CreationYearList objects={objects} />
-    </div>
-    </>
+    <Router>
+    <NavBar/>
+    {loading && <p>Loading objects on display...</p>}
+      {error && <p>Error: {error}</p>}
+      {!loading && !error && (
+        <Routes>
+          <Route path="/" element={<Dashboard objects={objects} />} />
+        </Routes>
+      )}
+    
+    </Router>
   )
 }
 
